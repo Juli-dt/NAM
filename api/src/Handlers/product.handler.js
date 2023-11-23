@@ -1,4 +1,4 @@
-const { postProduct, getProducts } = require("../Controller/products.controller")
+const { postProduct, getProducts, deleteProduct } = require("../Controller/products.controller")
 const Product = require("../models/Product");
 
 const getAllProductHandler = async (req, res) => {
@@ -21,7 +21,7 @@ const getAllProductHandler = async (req, res) => {
     }
 };
 
-const newProduct = async (req, res) =>{
+const newProduct = async (req, res) => {
     try {
         const productData = req.body
         const poster = await postProduct(productData)
@@ -34,7 +34,24 @@ const newProduct = async (req, res) =>{
     }
 }
 
+const prodDeleter = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const productDelete = await Product.findByPk(id);
+        if (!productDelete) {
+            return res.status(404).json({ error: "The ID to delete does not exist" });
+        } else {
+            await productDelete.destroy();
+            return res.status(204).send();
+        }
+    } catch (error) {
+        console.error("Error en el servidor:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+};
+
 module.exports = {
     newProduct,
-    getAllProductHandler
+    getAllProductHandler,
+    prodDeleter
 }

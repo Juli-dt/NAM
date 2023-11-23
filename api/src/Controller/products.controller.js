@@ -36,7 +36,25 @@ const postProduct = async (dataProduct) => {
     }
 }
 
+const deleteProduct = async (id) => {
+    try {
+        const deleter = await Product.destroy({
+            where: {
+                product_id: id,
+            },
+        });
+        if (deleter === 1) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        return "Error al eliminar el product", error;
+    }
+};
+
 module.exports = {
     postProduct,
-    getProducts
+    getProducts,
+    deleteProduct
 }
