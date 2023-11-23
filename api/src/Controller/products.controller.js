@@ -1,5 +1,42 @@
 const { Product, Category } = require("../db");
 
-const getProducts = async (req, res) => {
-    
+const getProducts = async () => {
+    try {
+        const products = await Product.findAll({
+            include: {
+                model: Category,
+                as: "categories",
+                attributes: ["name"],
+                through: { attributes: [] }
+            },
+        });
+        return products
+    } catch (error) {
+        return error
+    }
+}
+
+const postProduct = async (dataProduct) => {
+    try {
+        const {
+            name,
+            description,
+            images,
+            categories
+        } = dataProduct
+        const newProduct = await Product.create({
+            name,
+            description,
+            images,
+            categories
+        })
+        return newProduct
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = {
+    postProduct,
+    getProducts
 }
