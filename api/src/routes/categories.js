@@ -9,7 +9,7 @@ const categoryRouter = Router()
 
 categoryRouter.get("/", getAllCategories)
 
-categoryRouter.get("/find/:name", getCatByName)
+categoryRouter.get("/:name", getCatByName)
 
 categoryRouter.post("/", addCategory)
 

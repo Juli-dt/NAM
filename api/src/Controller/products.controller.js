@@ -52,9 +52,25 @@ const deleteProduct = async (id) => {
         return "Error al eliminar el product", error;
     }
 };
+const getProductById = async (id) => {
+    try {
+        const product = await Product.findByPk(id, {
+            include: {
+                model: Category,
+                as: "categories",
+                attributes: ["name"],
+                through: { attributes: [] },
+            },
+        });
 
+        return product;
+    } catch (error) {
+        throw new Error("Error al obtener el producto por ID");
+    }
+};
 module.exports = {
     postProduct,
     getProducts,
-    deleteProduct
+    deleteProduct,
+    getProductById
 }
