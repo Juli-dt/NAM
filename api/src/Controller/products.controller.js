@@ -22,17 +22,28 @@ const postProduct = async (dataProduct) => {
             name,
             description,
             images,
-            categories
+            categoryName
         } = dataProduct
         const newProduct = await Product.create({
             name,
             description,
             images,
-            categories
         })
+
+        if (categoryName) {
+            const category = await Category.findOne({ where: { name: categoryName } });
+
+            if (!category) {
+                return("Category not found with name " + categoryName);
+            }
+
+            // Assign the category to the product
+            await newProduct.setCategory(category);
+        }
+
         return newProduct
     } catch (error) {
-        return error
+        throw error
     }
 }
 
