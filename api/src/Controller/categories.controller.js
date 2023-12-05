@@ -2,7 +2,7 @@ const { Product, Category } = require("../db");
 
 const getCategories = async () => {
     try {
-        const categories = await Category.findall();
+        const categories = await Category.findAll();
         return categories
     } catch (error) {
         console.log(error);
@@ -19,13 +19,9 @@ const postCategory = async (name) => {
     }
 };
 
-const getCategoryByName = async (name) => {
-    const categoryName = name; // Obtén el nombre de los parámetros de la solicitud
-
+const getCategoryByName = async (id) => {
     try {
-        const category = await Category.findOne({
-            where: { name: categoryName },
-        });
+        const category = await Category.findByPk(id);
 
         // Verificar si se encontró la categoría
         if (!category) {
