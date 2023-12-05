@@ -14,3 +14,5 @@ categoryRouter.get("/:name", getCatByName)
 categoryRouter.post("/", addCategory)
 
 categoryRouter.delete("/:id", deleter)
+
+module.exports = categoryRouter
