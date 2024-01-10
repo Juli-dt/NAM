@@ -1,0 +1,14 @@
+.search-container {
+    display: grid;
+    grid-template-areas: 
+       "search-input search-button";
+    grid-gap: 10px;
+   }
+   
+   .search-input {
+    grid-area: search-input;
+   }
+   
+   .search-button {
+    grid-area: search-button;
+   }
