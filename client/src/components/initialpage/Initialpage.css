@@ -1,0 +1,25 @@
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #000000;
+  }
+  .all {
+background-color: rgba(121, 178, 233, 1);
+margin: 0;
+padding: 0;
+
+}
+.rectangle {
+  background-color: #e8d07e;
+
+}
+  .buttons button {
+    padding: 10px;
+    width: 25%;
+    border-color: transparent;
+  }
+  /* En Initialpage.css o tu archivo de estilos correspondiente */
+body {
+  margin: 0;
+}

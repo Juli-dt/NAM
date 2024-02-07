@@ -1,14 +1,21 @@
 .search-container {
     display: grid;
     grid-template-areas: 
-       "search-input search-button";
+       "search-input";
     grid-gap: 10px;
+    width: 50%;
+    
    }
    
    .search-input {
     grid-area: search-input;
+    height: 100%;
+    width: 100%;
    }
    
    .search-button {
     grid-area: search-button;
+    /* height: 100%;
+    width: 100%; */
+
    }

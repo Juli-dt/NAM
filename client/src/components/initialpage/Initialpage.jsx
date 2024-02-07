@@ -4,14 +4,17 @@ import './Initialpage.css'
 import Banner from "../banner/Banner"
 const initialPage = () => {
  return (
-    <div>
+    <div className='all'>
       <Banner/>
-      <div>
-        <Link to="/perros" className="button">Perros</Link>
-        <Link to="/gatos" className="button">Gatos</Link>
-        <Link to="/pajaros" className="button">Pájaros</Link>
-        <Link to="/hamsters" className="button">Hamsters</Link>
-        <Link to="/peces" className="button">Peces</Link>
+      <div class='buttons'>
+      <button><h1>Perros</h1></button>
+      <button><h1>Gatos</h1></button>
+      <button><h1>Peces</h1></button>
+      <button><h1>Hamster</h1></button>
+      <button><h1>Pájaros</h1></button>
+      </div>
+      <div className='rectangle'>
+        <p>   </p>
       </div>
     </div>
  );
